@@ -1,15 +1,21 @@
-# clay-assignment
+# clay-assignment [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/clenemt/docdash/blob/master/LICENSE.md)
 
-Holds code for the clay assignment.
+A sample react assignment. Feel free to fork, copy and modify as needed.
 
-See it in action: http://clenemt.com/clay 🚀
+## Example
 
-## Usage
+See https://clenemt.github.io/clay-assignment/ for a look at the code live. :rocket:
+
+## How to
+
+To run the sample locally, do the following:
 
 ```sh
-git clone https://github.com/clenemt/clay-assignment.git
 npm install
+npm run start
 ```
+
+It will install dependencies, build the `dist/` folder and launch a small server at [localhost:9000](http://localhost:9000).
 
 ## Guidelines
 
@@ -31,3 +37,7 @@ For ease of use you can use the template provided above. The following command w
 ```
 git config commit.template .gitmessage
 ```
+
+# License
+
+Licensed under [MIT](LICENSE.md).
