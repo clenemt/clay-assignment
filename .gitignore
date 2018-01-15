@@ -1,5 +1,5 @@
 # Build #
-/_dist
+/dist
 
 # NPM #
 node_modules

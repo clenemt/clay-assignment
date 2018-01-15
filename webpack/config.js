@@ -4,7 +4,7 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import rules from './webpack/rules';
+import rules from './rules';
 
 const isDebug = process.env.NODE_ENV !== 'production';
 const isVerbose = !!process.env.VERBOSE;
@@ -30,9 +30,9 @@ const config = {
   // How and where it should output our bundle
   // https://webpack.js.org/configuration/output/
   output: {
-    path: path.resolve(__dirname, '_dist'),
+    path: path.resolve(__dirname, '../dist'),
     pathinfo: isVerbose,
-    filename: `[name]${isDebug ? '' : '.min'}.js?[hash]`,
+    filename: `[name].js?[hash]`,
   },
 
   module: {
@@ -55,8 +55,15 @@ const config = {
     // Extract webpack css into its own bundle.css
     // https://webpack.js.org/plugins/extract-text-webpack-plugin/
     new ExtractTextPlugin({
-      filename: `[name]${isDebug ? '' : '.min'}.css`,
+      filename: `[name].css`,
       allChunks: true,
+    }),
+
+    // Define free variables
+    // https://webpack.js.org/plugins/define-plugin/
+    new webpack.DefinePlugin({
+      // Needed for setting webpack in production mode
+      'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
     }),
 
     ...(isDebug
@@ -97,6 +104,36 @@ const config = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
+  },
+
+  // Config for webpack dev server plugin (small http-server)
+  // https://webpack.js.org/configuration/dev-server/
+  devServer: {
+    port: 9000,
+    progress: isDebug,
+    open: !isDebug,
+
+    // Allow serving routes without going through index.html all the time
+    // https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback
+    historyApiFallback: true,
+
+    // Tell the server where to serve content from
+    // https://webpack.js.org/configuration/dev-server/#devserver-contentbase
+    contentBase: path.resolve(__dirname, '../dist'),
+
+    // Tell the server to watch the files served
+    // https://webpack.js.org/configuration/dev-server/#devserver-watchcontentbase
+    watchContentBase: true,
+
+    // Enable gzip compression for everything served
+    // https://webpack.js.org/configuration/dev-server/#devserver-compress
+    compress: isDebug,
+
+    // https://webpack.js.org/configuration/dev-server/#devserver-clientloglevel
+    clientLogLevel: isVerbose ? 'info' : isDebug ? 'warning' : 'error',
+
+    // https://webpack.js.org/configuration/dev-server/#devserver-noinfo-
+    noInfo: !isDebug,
   },
 };
 

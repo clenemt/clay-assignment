@@ -15,5 +15,14 @@
     "airbnb",                   // https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
     "prettier",                 // https://github.com/prettier/eslint-config-prettier
     "prettier/react"            // https://github.com/prettier/eslint-config-prettier
-  ]
+  ],
+
+  "rules": {
+    "react/prop-types": "off",
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }]
+  }
 }
