@@ -16,7 +16,7 @@
   "scripts": {
     "clean": "shx rm  -rf dist",
     "scaffold":
-      "npm run clean && shx mkdir dist && shx cp index.html dist/index.html",
+      "npm run clean && shx mkdir dist && shx cp src/index.html dist/index.html",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .jsx,.js .",
     "lint:staged": "lint-staged",
