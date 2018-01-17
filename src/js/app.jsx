@@ -13,17 +13,19 @@ import NotFoundPage from './containers/NotFoundPage';
 import TabListPage from './containers/TabListPage';
 
 import emitter from './utils/emitter';
-import userStore from './stores/userStore';
+import currentUserStore from './stores/currentUserStore';
 import authService from './services/authService';
 
 class App extends React.Component {
   constructor() {
     super();
+
     // Bind to user store events (mostly login or logout)
-    emitter.on('store.user.change', user => this.setState({ user }));
+    emitter.on('store.currentuser.change', user => this.setState({ user }));
 
     this.state = {
-      user: userStore.getUser(),
+      // Retrieve previous user if any
+      user: currentUserStore.get(),
     };
   }
 

@@ -1,0 +1,10 @@
+.card {
+  padding: $spacer * 2 $spacer;
+  background: $grey-700;
+  border: $border-width solid $grey-500;
+  border-radius: $border-radius;
+}
+
+.card--small {
+  max-width: 540px;
+}

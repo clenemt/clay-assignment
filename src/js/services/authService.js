@@ -1,16 +1,23 @@
-import userStore from '../stores/userStore';
+import usersStore from '../stores/usersStore';
+import currentUserStore from '../stores/currentUserStore';
+import { delay } from '../utils/funcs';
 
 const authService = {
-  login(user) {
-    return new Promise(r => setTimeout(r, 500)).then(() =>
-      userStore.setUser(user)
-    );
+  login(username, password) {
+    return delay(500).then(() => {
+      const user = usersStore.get(username);
+
+      // Very dumb check
+      if (user && user.password === password) {
+        currentUserStore.set(user);
+      } else {
+        throw new Error('Login failed');
+      }
+    });
   },
 
   logout() {
-    return new Promise(r => setTimeout(r, 500)).then(() =>
-      userStore.setUser(null)
-    );
+    return delay(500).then(() => currentUserStore.set(null));
   },
 };
 

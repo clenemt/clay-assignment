@@ -1,0 +1,371 @@
+//
+// Variables
+//
+
+$input-check-gutter: $spacer * 1.5;
+$input-radio-size: 1rem;
+$input-check-size: 1rem;
+
+// Validation
+$error-icon: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$red-200}' viewBox='0 0 23 23'%3E%3Cpath fill='#{$red-200}' d='M11.5 10.012L6.785 5.297c-.4-.4-1.026-.393-1.417-.002-.393.393-.39 1.025.002 1.416l4.716 4.717-4.716 4.715c-.398.4-.392 1.026-.002 1.416.394.394 1.025.39 1.417-.002L11.5 12.84l4.715 4.716c.4.4 1.026.393 1.417.002.393-.393.39-1.024-.002-1.416l-4.716-4.715L17.63 6.71c.398-.398.392-1.025.002-1.415-.394-.393-1.025-.39-1.417.002L11.5 10.012z'/%3E%3C/svg%3E"),
+  '#',
+  '%23'
+);
+$success-icon: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23'%3E%3Cpath fill='#{$green-200}' d='M9.067 17.488c.236-.022.464-.128.638-.315l9.547-10.238c.38-.407.355-1.037-.05-1.414-.406-.378-1.036-.353-1.413.05l-8.91 9.556-3.697-3.447c-.398-.372-1.035-.353-1.41.05-.38.407-.357 1.036.046 1.412l4.39 4.096c.237.22.557.303.857.25z'/%3E%3C/svg%3E"),
+  '#',
+  '%23'
+);
+
+// Custom
+$input-check-checked: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$white}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"),
+  '#',
+  '%23'
+);
+$input-radio-checked: str-replace(
+  url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$grey-200}'/%3E%3C/svg%3E"),
+  '#',
+  '%23'
+);
+
+//
+// Inputs
+//
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $inputs-padding-y ($spacer * 0.75);
+  font-size: $font-size;
+  font-weight: normal;
+  line-height: $inputs-line-height;
+  color: $grey-200;
+  background-color: $white;
+  // Reset unusual Firefox-on-Android default style
+  // see https://github.com/necolas/normalize.css/issues/214
+  background-image: none;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 2px $grey-600;
+
+  // Remove native styles (like carets on select)
+  appearance: none;
+
+  // Remove the caret on `<select>`s in IE10+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &::placeholder {
+    color: $grey-400;
+    // Override Firefox's unusual default opacity
+    // see https://github.com/twbs/bootstrap/pull/11526
+    opacity: 1;
+  }
+
+  &:focus {
+    color: $grey-200;
+    box-shadow: inset 0 0 0 2px $grey-400;
+    outline: 0;
+  }
+
+  &:disabled,
+  &[readonly] {
+    color: $disabled-color;
+    background-color: $disabled-bg;
+    cursor: not-allowed;
+    // iOS fix for unreadable disabled content
+    // see https://github.com/twbs/bootstrap/issues/11655
+    opacity: 1;
+  }
+}
+
+select.form-control {
+  &:not([size]):not([multiple]) {
+    // Select can not use line-height
+    height: $input-height;
+    background: $white
+      url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cpath fill='%23333' d='M4.243 2.65L2.115.52C1.728.135 1.1.135.707.53.317.918.32 1.554.7 1.935l2.842 2.842c.192.192.444.29.697.29.26-.004.513-.1.703-.29l2.842-2.842C8.172 1.55 8.17.92 7.778.528 7.388.138 6.752.14 6.37.52L4.243 2.65z'/%3E%3C/svg%3E")
+      no-repeat right 0.75rem center;
+    // In pixels because image dimensions
+    -webkit-background-size: 8px 10px;
+    background-size: 8px 10px;
+
+    &:disabled,
+    &[readonly] {
+      background-color: $disabled-bg;
+    }
+  }
+
+  &:focus::-ms-value {
+    // Suppress the nested default white text on blue background highlight given to
+    // the selected option text when the (still closed) <select> receives focus
+    // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+    // match the appearance of the native widget.
+    // See https://github.com/twbs/bootstrap/issues/19398
+    color: $grey-200;
+    background-color: $white;
+  }
+}
+
+// Make file inputs better match text inputs by forcing them to new lines
+.form-control[type='file'] {
+  display: block;
+  border: none;
+}
+
+//
+// Inputs Sizes
+//
+
+.form-control--sm {
+  padding: $inputs-padding-y-sm ($spacer * 0.75);
+  font-size: $font-size-sm;
+  line-height: $inputs-line-height-sm;
+}
+
+select.form-control--sm {
+  &:not([size]):not([multiple]) {
+    height: $input-height-sm;
+  }
+}
+
+.form-control--lg {
+  padding: $inputs-padding-y-lg ($spacer * 0.75);
+  font-size: $font-size-lg;
+  line-height: $inputs-line-height-lg;
+}
+
+select.form-control--lg {
+  &:not([size]):not([multiple]) {
+    height: $input-height-lg;
+  }
+}
+
+//
+// Inputs Utils
+//
+
+.form-group {
+  margin-bottom: $spacer;
+}
+
+.form-text {
+  margin-top: $spacer * 0.25;
+  font-size: $font-size-sm;
+  color: $grey-400;
+}
+
+.form-feedback {
+  margin-top: $spacer * 0.25;
+  font-size: $font-size-sm;
+}
+
+.form-label {
+  margin-bottom: $spacer * 0.25;
+  font-weight: bold;
+}
+
+//
+// Inputs Checkboxes & Radios
+//
+
+.form-check {
+  position: relative;
+  margin-bottom: $spacer * 0.5;
+}
+
+.form-check__label {
+  display: inline-block;
+  padding-left: $input-check-gutter;
+  // Override default `<label>` bottom margin
+  margin-bottom: 0;
+  cursor: pointer;
+
+  .form-check--disabled & {
+    color: $grey;
+    cursor: not-allowed;
+  }
+}
+
+.form-check__input {
+  position: absolute;
+  // Put the input behind the label so it doesn't overlay text
+  z-index: -1;
+  opacity: 0;
+
+  &:focus ~ .form-check__indicator {
+    border-color: $grey-300;
+  }
+
+  &:checked ~ .form-check__indicator {
+    background-color: $grey-200;
+    border-color: $grey-200;
+  }
+
+  &:disabled {
+    ~ .form-check__indicator {
+      border-color: $grey;
+      background-color: $disabled-bg;
+    }
+
+    ~ .form-check__description {
+      color: $grey-200;
+    }
+  }
+}
+
+// The common fake radio / checkbox
+.form-check__indicator {
+  position: absolute;
+  border: $inputs-border-width solid $grey-400;
+  left: 0;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+}
+
+// Radio specific
+.form-check__input[type='radio'] {
+  ~ .form-check__indicator {
+    border-radius: 50%;
+    top: (($line-height * $font-size) - $input-radio-size) / 2;
+    width: $input-radio-size;
+    height: $input-radio-size;
+  }
+
+  &:checked ~ .form-check__indicator {
+    background-image: $input-radio-checked;
+    background-color: $white;
+  }
+}
+
+// Checkbox specific
+.form-check__input[type='checkbox'] {
+  ~ .form-check__indicator {
+    top: (($line-height * $font-size) - $input-check-size) / 2;
+    width: $input-check-size;
+    height: $input-check-size;
+  }
+
+  &:checked ~ .form-check__indicator {
+    background-image: $input-check-checked;
+  }
+}
+
+.form-check--inline {
+  display: inline-block;
+
+  .form-check__label {
+    vertical-align: middle;
+  }
+
+  + .form-check--inline {
+    margin-left: $spacer * 0.75;
+  }
+
+  // Remove the margin when inside form-group
+  // otherwise double the pleasure
+  // only needed if they wrap to next line
+  .form-group & {
+    margin-bottom: 0;
+  }
+}
+
+//
+// Inputs Validation
+//
+
+.has-success .form-control,
+.has-error .form-control {
+  padding-right: $spacer * 2.25;
+  background-repeat: no-repeat;
+  background-position: center right ($input-height / 4);
+  background-size: $input-height / 2;
+}
+
+.has-success {
+  .form-check__label {
+    color: $green-200;
+  }
+
+  .form-control {
+    background-image: $success-icon;
+  }
+}
+
+.has-error {
+  &.form-feedback,
+  .form-feedback,
+  .form-label,
+  .form-check__label {
+    color: $red-200;
+  }
+
+  .form-control {
+    background-image: $error-icon;
+    border-color: $red-200;
+
+    &:focus {
+      border-color: $grey-400;
+    }
+  }
+}
+
+//
+// Inline forms
+//
+
+.form--inline {
+  display: flex;
+  flex-flow: row wrap;
+  // Prevent shorter elements from growing to same height as others
+  // (e.g., small buttons growing to normal sized button height)
+  align-items: center;
+
+  @include media-breakpoint-up(sm) {
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    .form-group {
+      display: flex;
+      flex: 0 0 auto;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    // Allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+      // Prevent labels from stacking above inputs in `.form-group`
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .form-label {
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match.
+    .form-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+  }
+}

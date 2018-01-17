@@ -1,0 +1,16 @@
+.site {
+}
+
+.site__login {
+  margin-top: 15vh;
+
+  @include media-breakpoint-down(xs) {
+    margin-top: 3 * $spacer;
+
+    .card {
+      border-left: transparent;
+      border-right: transparent;
+      border-radius: 0;
+    }
+  }
+}

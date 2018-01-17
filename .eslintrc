@@ -21,10 +21,12 @@
     "no-shadow": "off",
     "no-nested-ternary": "off",
     "react/prop-types": "off",
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "to" ],
-      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    "react/require-default-props": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-for": [ "error", {
+        "required": {
+            "every": [ "id" ]
+        }
     }]
   }
 }

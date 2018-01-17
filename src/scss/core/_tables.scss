@@ -1,0 +1,49 @@
+//
+// Tables
+//
+
+.table {
+  margin-bottom: $spacer;
+  background-color: transparent;
+  font-size: $font-size;
+
+  th,
+  td {
+    padding: ($spacer * 0.5) ($spacer * 1.5);
+    vertical-align: top;
+    border-bottom: $border-width solid $grey-600;
+    max-width: 250px;
+
+    // left aligned tables
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  thead th {
+    vertical-align: bottom;
+  }
+}
+
+.table--responsive {
+  width: 100%;
+  max-width: 100%;
+
+  th,
+  td {
+    max-width: initial;
+  }
+
+  @include media-breakpoint-down(sm) {
+    overflow-x: auto;
+    // See https://github.com/twbs/bootstrap/pull/10057
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+}
+
+// Selected row
+.row--selected th:first-child,
+.row--selected td:first-child {
+  border-left: 4px solid $brand-primary;
+  padding-left: $spacer;
+}

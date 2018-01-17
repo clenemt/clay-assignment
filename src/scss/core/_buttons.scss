@@ -1,0 +1,303 @@
+//
+// Variables
+//
+
+$btn-primary: #fc8300;
+$btn-loader-size: 1.5rem;
+$btn-sm-loader-size: 1rem;
+
+//
+// Buttons
+//
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: $inputs-padding-y ($spacer * 3);
+  border: none;
+  border-radius: 0;
+  font-size: $font-size;
+  font-weight: normal;
+  line-height: $line-height;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    opacity: 0.1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    &::before {
+      // Swoosh to the right on focus / hover
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  &:focus {
+    // Reset button focus style
+    outline: 0;
+  }
+
+  &:active::before {
+    // Swoosh to the left on click
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  // Disabled comes first so active can properly restyle
+  // Loading buttons should not be styled though
+  &:disabled:not(.btn--loading),
+  &.btn--disabled:not(.btn--loading),
+  &:hover:disabled:not(.btn--loading),
+  &:hover.btn--disabled:not(.btn--loading) {
+    color: $disabled-color;
+    background-color: $disabled-bg;
+    background-image: none;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  &:disabled::before,
+  &.btn--disabled::before {
+    // Remove the swoosh
+    content: none;
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` and `<button>` elements
+a.btn--disabled,
+button.btn--disabled,
+fieldset[disabled] a.btn,
+fieldset[disabled] button.btn {
+  pointer-events: none;
+}
+
+//
+// Buttons Variations
+//
+
+// 1. The `&:hover, &:focus` is needed to overide `a:hover` specificity
+// when using an anchor as a button
+
+// Primary buttons
+.btn--primary {
+  color: $white;
+  background-color: $brand-secondary;
+  box-shadow: 0 4px 8px 0 rgba($brand-secondary, 0.2);
+
+  &:hover,
+  &:focus,
+  &.btn--active {
+    color: $white; // 1
+    box-shadow: 0 6px 14px 0 rgba($brand-secondary, 0.25);
+  }
+
+  &:active {
+    color: $white; // 1
+    box-shadow: 0 4px 8px 0 rgba($brand-secondary, 0.2);
+  }
+
+  &::before {
+    opacity: 0.2;
+  }
+
+  &.btn--active::before {
+    opacity: 0.3;
+    transform: scaleX(1);
+    transform-origin: left;
+    border: 2px solid $brand-secondary;
+  }
+
+  &.btn--active:active::before {
+    transform: scaleX(0);
+    transform-origin: right;
+    border: 2px solid $brand-secondary;
+  }
+}
+
+// Secondary buttons
+.btn--secondary {
+  color: $brand-secondary;
+  background-color: $white;
+  box-shadow: inset 0 0 0 1px $brand-secondary;
+
+  &:hover,
+  &:focus {
+    color: $brand-secondary; // 1
+  }
+
+  &:active {
+    color: $brand-secondary; // 1
+  }
+
+  &::before {
+    background-color: $brand-secondary;
+    opacity: 0.05;
+  }
+
+  &.btn--active {
+    box-shadow: inset 0 0 0 2px $brand-secondary;
+  }
+
+  &.btn--active::before {
+    opacity: 0.05;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  &.btn--active:active::before {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+//
+// Buttons Loading
+//
+
+.btn--loading {
+  color: transparent !important;
+  position: relative;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $btn-loader-size;
+    height: $btn-loader-size;
+    margin-top: -$btn-loader-size / 2;
+    margin-left: -($btn-loader-size / 2);
+    border: 3px solid transparent;
+    border-left-color: $white;
+    border-bottom-color: $white;
+    border-radius: 50%;
+    transform: translateZ(0);
+    animation: btnloading 1s infinite linear;
+  }
+
+  // Invert colors
+  &.btn--secondary::after {
+    border-left-color: $brand-secondary;
+    border-bottom-color: $brand-secondary;
+  }
+}
+
+@keyframes btnloading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//
+// Buttons Sizes
+//
+
+.btn--sm {
+  padding: $inputs-padding-y-sm ($spacer * 1.5);
+  font-size: $font-size;
+  line-height: $inputs-line-height-sm;
+
+  // Smaller loader for sm buttons
+  &.btn--loading::after {
+    border-width: 2px;
+    width: $btn-sm-loader-size;
+    height: $btn-sm-loader-size;
+    margin-top: -$btn-sm-loader-size / 2;
+    margin-left: -($btn-sm-loader-size / 2);
+  }
+
+  &.btn--round {
+    width: $input-height-sm;
+    height: $input-height-sm;
+  }
+}
+
+.btn--lg {
+  padding: $inputs-padding-y-lg ($spacer * 4.5);
+  font-size: $font-size-lg;
+  line-height: $inputs-line-height-lg;
+
+  &.btn--round {
+    width: $input-height-lg;
+    height: $input-height-lg;
+  }
+}
+
+// Collapse margins on small screens to gain space
+@include media-breakpoint-down(sm) {
+  .btn {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+
+  // Override the above left/right padding reduction
+  .btn--link {
+    padding: 0;
+  }
+
+  .btn--sm {
+    padding-left: $spacer * 0.75;
+    padding-right: $spacer * 0.75;
+  }
+}
+
+//
+// Buttons Block
+//
+
+.btn--block {
+  display: block;
+  width: 100%;
+  // Remove our big padding on block buttons
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Specificity overrides
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  &.btn--block {
+    width: 100%;
+  }
+}
+
+//
+// Buttons Responsive
+// Normal button except on mobile where it is similar to a block button
+//
+
+.btn--responsive {
+  @include media-breakpoint-down(sm) {
+    display: block;
+    width: 100%;
+    // Remove our big padding on responsive buttons
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

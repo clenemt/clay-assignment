@@ -1,0 +1,22 @@
+//
+// Images
+//
+
+.img--fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.fig {
+  // Ensures the caption's text aligns with the image.
+  display: inline-block;
+}
+
+.fig__img {
+  margin-bottom: $spacer * 0.5;
+  line-height: 1;
+}
+
+.fig__caption {
+  color: $grey-300;
+}

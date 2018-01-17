@@ -1,0 +1,44 @@
+//
+// Variables
+//
+
+$alert-padding-y: 0.75rem;
+$alert-padding-x: 1.25rem;
+
+//
+// Alerts
+//
+
+.alert {
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $spacer;
+  font-size: $font-size-sm;
+}
+
+// Links should have same color as alert text and always be underlined
+.alert__link,
+.alert__link:hover {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+}
+
+//
+// Alerts Variations
+//
+
+.alert--success {
+  background-color: $green-300;
+}
+
+.alert--info {
+  background-color: $grey-700;
+}
+
+.alert--warning {
+  background-color: $yellow-300;
+}
+
+.alert--error {
+  background-color: $red-300;
+}
