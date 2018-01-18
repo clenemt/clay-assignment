@@ -25,9 +25,14 @@
   margin: 0 $spacer 0 $spacer * 2;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   opacity: 0.8;
+  vertical-align: initial;
 
   .styled-list__item:hover & {
     opacity: 1;
+  }
+
+  @include media-breakpoint-down(xs) {
+    margin: 0 $spacer;
   }
 }
 
@@ -57,6 +62,8 @@
   color: $grey-300;
   text-decoration: underline;
   width: 30%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   .styled-list__item:hover & {
     color: $grey-200;
@@ -74,6 +81,10 @@
 
   .styled-list__item:hover & {
     opacity: 0.8;
+  }
+
+  @include media-breakpoint-down(xs) {
+    margin: 0 $spacer;
   }
 }
 
