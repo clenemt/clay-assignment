@@ -6,10 +6,10 @@ import emitter from '../utils/emitter';
  * Puts it inside localstorage to mimic some back-end persistency.
  */
 const currentUserStore = {
-  set(user) {
-    store.set('currentUser', user);
-    emitter.emit('store.currentuser.change', user);
-    return user;
+  set(id) {
+    store.set('currentUser', id);
+    emitter.emit('store.currentuser.change', id);
+    return id;
   },
 
   get() {

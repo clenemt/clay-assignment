@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import doorsStore from '../stores/doorsStore';
+import usersStore from '../stores/usersStore';
 import eventsStore from '../stores/eventsStore';
 import currentUserStore from '../stores/currentUserStore';
 
@@ -25,12 +26,17 @@ const doorsService = {
   },
 
   getDoorsForUser() {
-    const currentUser = currentUserStore.get();
+    const currentUserId = currentUserStore.get();
+    const users = usersStore.get();
+    const currentUser = users.find((user) => currentUserId === user.id);
     const doors = doorsStore.get();
     const userDoors = [];
 
     // Bypass for admin users to see all doors
     if (currentUser.isAdmin) return doors;
+
+    // Break early if no doors
+    if (!currentUser.doors) return [];
 
     currentUser.doors.forEach((doorId) => {
       const door = doors.find((door) => door.id === doorId);
@@ -41,14 +47,32 @@ const doorsService = {
   },
 
   edit(door) {
-    return delay(500).then(() => doorsStore.edit(door));
+    const currentUserId = currentUserStore.get();
+    const users = usersStore.get();
+    const currentUser = users.find((user) => currentUserId === user.id);
+
+    return delay(500).then(() => {
+      const doorUsers = door.users || [];
+      if (!doorUsers.find((userId) => currentUser.id === userId)) {
+        doorUsers.push(currentUser.id);
+      }
+
+      const newDoor = doorsStore.edit(Object.assign({ users: doorUsers }, door));
+
+      const userDoors = currentUser.doors || [];
+      if (!userDoors.find((doorId) => newDoor.id === doorId)) {
+        userDoors.push(newDoor.id);
+      }
+
+      usersStore.edit(Object.assign({ doors: userDoors }, currentUser));
+    });
   },
 
   unlock(door) {
     const currentUser = currentUserStore.get();
     const data = {
       doorId: door.id,
-      userId: currentUser.id,
+      userId: currentUser,
       action: 'open',
     };
 
@@ -66,7 +90,7 @@ const doorsService = {
     const currentUser = currentUserStore.get();
     const data = {
       doorId: door.id,
-      userId: currentUser.id,
+      userId: currentUser,
       action: 'close',
     };
 

@@ -13,7 +13,7 @@ const authService = {
 
       // Very dumb check
       if (user && user.password === password) {
-        currentUserStore.set(user);
+        currentUserStore.set(user.id);
       } else {
         throw new Error('Login failed');
       }

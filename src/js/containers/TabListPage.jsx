@@ -25,11 +25,13 @@ class TabListPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const currentUser = currentUserStore.get();
-    this.isAdmin = currentUser.isAdmin;
+    const currentUserId = currentUserStore.get();
+    const users = usersStore.get();
+    const currentUser = users.find((user) => currentUserId === user.id);
+    this.isAdmin = currentUser && currentUser.isAdmin;
 
     this.state = {
-      users: usersStore.get(),
+      users,
       doors: doorsService.getDoorsForUser(),
       events: eventsService.getEventsForUser(),
     };

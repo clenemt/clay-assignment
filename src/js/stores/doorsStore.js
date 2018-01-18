@@ -21,16 +21,19 @@ const doorsStore = {
   edit(door) {
     const doors = store.get('doors');
     const oldDoor = doors.find((dor) => dor.id === door.id || dor.name === door.name);
+    let newDoor;
 
     if (oldDoor) {
-      Object.assign(oldDoor, door);
+      newDoor = Object.assign(oldDoor, door);
     } else {
       const newId = doors[doors.length - 1].id + 1;
-      const newDoor = Object.assign({ id: newId }, door);
+      newDoor = Object.assign({ id: newId }, door);
       doors.push(newDoor);
     }
 
     doorsStore.set(doors);
+
+    return newDoor;
   },
 
   remove(id) {

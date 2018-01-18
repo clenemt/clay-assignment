@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import usersStore from '../stores/usersStore';
 import eventsStore from '../stores/eventsStore';
 import currentUserStore from '../stores/currentUserStore';
 
@@ -24,7 +25,9 @@ const eventsService = {
 
   getEventsForUser() {
     const events = eventsStore.get();
-    const currentUser = currentUserStore.get();
+    const currentUserId = currentUserStore.get();
+    const users = usersStore.get();
+    const currentUser = users.find((user) => currentUserId === user.id);
 
     // Bypass for admin users to see all events
     if (currentUser.isAdmin) return events;
