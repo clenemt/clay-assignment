@@ -38,7 +38,7 @@ class App extends React.Component {
           <Route
             path="/"
             render={(props) =>
-              this.state.user ? (
+              this.state.user != null ? (
                 <Switch>
                   <Route path="/users/:id" component={UserDetailPage} />
                   <Route path="/doors/:id" component={DoorDetailPage} />
