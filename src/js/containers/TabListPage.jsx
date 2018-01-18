@@ -10,17 +10,12 @@ import DoorList from '../components/DoorList';
 import EventList from '../components/EventList';
 
 import usersStore from '../stores/usersStore';
-import doorsStore from '../stores/doorsStore';
-import eventsStore from '../stores/eventsStore';
 import currentUserStore from '../stores/currentUserStore';
 
+import doorsService from '../services/doorsService';
 import eventsService from '../services/eventsService';
 
 import { upperCase } from '../utils/funcs';
-
-const pathToTitle = (path) => upperCase(path.slice(1)) || 'Users';
-const pathToKey = (path) =>
-  ['users', 'doors', 'events'].find((key) => key === path.slice(1).toLowerCase()) || 'users';
 
 /**
  * The main tab layout.
@@ -35,8 +30,8 @@ class TabListPage extends React.Component {
 
     this.state = {
       users: usersStore.get(),
-      doors: doorsStore.get(),
-      events: eventsStore.get(),
+      doors: doorsService.getDoorsForUser(),
+      events: eventsService.getEventsForUser(),
     };
   }
 
@@ -44,13 +39,21 @@ class TabListPage extends React.Component {
     eventsService.remove().then(() => this.setState({ events: [] }));
   };
 
+  pathToKey(path) {
+    let key =
+      ['users', 'doors', 'events'].find((key) => key === path.slice(1).toLowerCase()) || 'users';
+    if (key === 'users' && !this.isAdmin) key = 'doors';
+    return key;
+  }
+
   render() {
     const path = this.props.location.pathname;
-    const activeKey = pathToKey(path);
+    const activeKey = this.pathToKey(path);
+    const title = upperCase(activeKey);
 
     return (
       <>
-        <Nav title={pathToTitle(path)} />
+        <Nav title={title} />
         <div className="container px-2">
           <Tabs activeKey={activeKey} className="site__tabs">
             {this.isAdmin && (

@@ -24,6 +24,22 @@ const doorsService = {
     });
   },
 
+  getDoorsForUser() {
+    const currentUser = currentUserStore.get();
+    const doors = doorsStore.get();
+    const userDoors = [];
+
+    // Bypass for admin users to see all doors
+    if (currentUser.isAdmin) return doors;
+
+    currentUser.doors.forEach((doorId) => {
+      const door = doors.find((door) => door.id === doorId);
+      if (door) userDoors.push(door);
+    });
+
+    return userDoors;
+  },
+
   edit(door) {
     return delay(500).then(() => doorsStore.edit(door));
   },

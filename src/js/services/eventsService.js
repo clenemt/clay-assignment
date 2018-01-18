@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import eventsStore from '../stores/eventsStore';
+import currentUserStore from '../stores/currentUserStore';
 
 import { delay } from '../utils/funcs';
 import { eventsEndpoint } from '../utils/variables';
@@ -19,6 +20,16 @@ const eventsService = {
         }
       });
     });
+  },
+
+  getEventsForUser() {
+    const events = eventsStore.get();
+    const currentUser = currentUserStore.get();
+
+    // Bypass for admin users to see all events
+    if (currentUser.isAdmin) return events;
+
+    return events.filter((event) => event.userId === currentUser.id);
   },
 
   remove(identifier) {
