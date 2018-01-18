@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { upperCase } from '../utils/funcs';
 import { defaultDoor } from '../utils/variables';
 
 const DoorList = ({ doors }) => (
@@ -25,7 +26,7 @@ const DoorList = ({ doors }) => (
             />
             <div className="w-50">
               <span className="d-block">{door.name}</span>
-              <span className="d-block t-3 t-grey">{door.mode}</span>
+              <span className="d-block t-3 t-grey">{upperCase(door.mode)}</span>
             </div>
             <small className={statusClasses}>{door.status}</small>
             <span className="styled-list__arrow" />

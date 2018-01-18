@@ -16,7 +16,9 @@ import currentUserStore from '../stores/currentUserStore';
 
 import eventsService from '../services/eventsService';
 
-const formatPath = (path) => path.charAt(1).toUpperCase() + path.slice(2).toLowerCase();
+import { upperCase } from '../utils/funcs';
+
+const pathToTitle = (path) => upperCase(path.slice(1)) || 'Users';
 const pathToKey = (path) =>
   ['users', 'doors', 'events'].find((key) => key === path.slice(1).toLowerCase()) || 'users';
 
@@ -48,7 +50,7 @@ class TabListPage extends React.Component {
 
     return (
       <>
-        <Nav title={formatPath(path)} />
+        <Nav title={pathToTitle(path)} />
         <div className="container px-2">
           <Tabs activeKey={activeKey} className="site__tabs">
             {this.isAdmin && (
