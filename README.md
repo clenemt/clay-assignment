@@ -30,7 +30,7 @@ It only runs **thanks to**:
 * [axios](https://github.com/axios/axios) for the promise based HTTP client
 * [mitt](https://github.com/developit/mitt) for the tiny event emitter
 
-**Attention**: Since there is no real backend and because everything is stored inside your local storage, if you ever get stuck in a bad state, simply clear your local storage.
+**Attention**: Since there is no real backend and because everything is stored inside your local storage, if you ever get stuck in a bad state or want the dummy data back, simply clear your local storage.
 
 ## Guidelines
 
