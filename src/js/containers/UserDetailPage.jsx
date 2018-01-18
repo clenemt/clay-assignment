@@ -7,6 +7,7 @@ import UserForm from '../components/UserForm';
 import UserDetails from '../components/UserDetails';
 
 import usersStore from '../stores/usersStore';
+import doorsStore from '../stores/doorsStore';
 import usersService from '../services/usersService';
 
 /**
@@ -27,7 +28,13 @@ class UserDetailPage extends React.Component {
       email: '',
       phone: '',
       isAdmin: false,
+      doors: '',
     };
+
+    this.doorsOptions = doorsStore.get().map((door) => ({
+      value: door.id,
+      label: door.name,
+    }));
 
     this.validationSchema = Yup.object().shape({
       firstName: Yup.string()
@@ -55,6 +62,14 @@ class UserDetailPage extends React.Component {
   }
 
   onSubmit = (values) => {
+    // Remap doors to simple array because of react-select
+    // needing HTML options to work
+    if (values.doors) {
+      values.doors = values.doors.map(
+        (door) => (typeof door.value !== 'undefined' ? door.value : door)
+      );
+    }
+
     usersService.edit(values).then(() => this.props.history.push('/users'));
   };
 
@@ -63,7 +78,11 @@ class UserDetailPage extends React.Component {
     const title = isNewUser
       ? 'Add a user'
       : `${this.state.user.firstName} ${this.state.user.lastName}`;
-    const buttonLabel = isNewUser ? 'Create' : 'Update';
+
+    const otherProps = {
+      buttonLabel: isNewUser ? 'Create' : 'Update',
+      doorsOptions: this.doorsOptions,
+    };
 
     return (
       <>
@@ -75,7 +94,7 @@ class UserDetailPage extends React.Component {
               validationSchema={this.validationSchema}
               initialValues={this.initialValues}
               onSubmit={this.onSubmit}
-              render={(formikProps) => <UserForm {...formikProps} {...{ buttonLabel }} />}
+              render={(formikProps) => <UserForm {...formikProps} {...otherProps} />}
             />
           </div>
         </div>

@@ -15,6 +15,9 @@ const EventList = ({ events, doors, users }) => (
       const doorEvent = doors.find((door) => event.doorId === door.id);
       const userEvent = users.find((user) => event.userId === user.id);
 
+      // In case user was removed access to door
+      if (!doorEvent || !userEvent) return null;
+
       return (
         <li key={event.id} className="styled-list__item">
           <img

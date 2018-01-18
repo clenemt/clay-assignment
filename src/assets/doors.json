@@ -7,7 +7,7 @@
       "description": "A small meeting room",
       "mode": "normal",
       "status": "close",
-      "users": [1, 2, 3, 4, 5]
+      "users": [0, 2, 3, 4]
     },
     {
       "id": 1,
@@ -16,7 +16,7 @@
       "description": "A large meeting room with two screens",
       "mode": "offline",
       "status": "close",
-      "users": [1, 2, 3, 4, 5]
+      "users": [0, 1, 2, 4, 5, 7]
     },
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "description": "A cosy room with a balcony",
       "mode": "office mode",
       "status": "open",
-      "users": [1, 2, 3]
+      "users": [0, 2, 3, 5]
     }
   ]
 }

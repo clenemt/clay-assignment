@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Field, Form } from 'formik';
 
 import Button from './Button';
+import DoorsSelect from './DoorsSelect';
 
 const UserForm = ({
   values,
@@ -11,7 +11,10 @@ const UserForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
+  setFieldValue,
+  setFieldTouched,
   buttonLabel,
+  doorsOptions,
 }) => (
   <form onSubmit={handleSubmit}>
     <div className={errors.firstName && touched.firstName ? 'form-group has-error' : 'form-group'}>
@@ -112,6 +115,16 @@ const UserForm = ({
       />
       {errors.password &&
         touched.password && <div className="form-feedback">{errors.password}</div>}
+    </div>
+
+    <div className="form-group">
+      <DoorsSelect
+        onChange={setFieldValue}
+        onBlur={setFieldTouched}
+        options={doorsOptions}
+        value={values.doors}
+        touched={touched.doors}
+      />
     </div>
 
     <div className="form-check">
