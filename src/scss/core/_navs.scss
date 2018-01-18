@@ -1,0 +1,62 @@
+//
+// Navs
+//
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  a {
+    display: block;
+    padding: $spacer/2 $spacer;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+//
+// Tabs
+//
+
+.nav__tabs {
+  .nav__item {
+    border: $border-width solid $brand-secondary;
+    border-right: 0;
+
+    &:last-child {
+      border-right: $border-width solid $brand-secondary;
+    }
+  }
+
+  .nav__item--active {
+    background-color: $brand-secondary;
+  }
+
+  .nav__item--active a {
+    color: $white;
+  }
+
+  a {
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 0 0 1px $brand-secondary;
+    }
+  }
+}
+
+//
+//  Variants
+//
+
+.nav--block {
+  .nav__item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}

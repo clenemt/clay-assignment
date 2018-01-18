@@ -2,6 +2,10 @@ import usersStore from '../stores/usersStore';
 import currentUserStore from '../stores/currentUserStore';
 import { delay } from '../utils/funcs';
 
+/**
+ * Used to fake authenticate.
+ * Also mimic some kind of delay for some better UX.
+ */
 const authService = {
   login(username, password) {
     return delay(500).then(() => {

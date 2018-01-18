@@ -1,6 +1,10 @@
 import store from 'store';
 import emitter from '../utils/emitter';
 
+/**
+ * Holds the users once fetch from the json.
+ * Puts them inside localstorage to mimic some back-end persistency.
+ */
 const userStore = {
   set(users) {
     store.set('users', users);
@@ -9,30 +13,33 @@ const userStore = {
 
   get(identifier) {
     const users = store.get('users');
-    return identifier
-      ? users.find(
-          user => user.id === identifier || user.username === identifier
-        )
+    return typeof identifier !== 'undefined'
+      ? users.find((user) => user.id === identifier || user.username === identifier)
       : users;
   },
 
-  add(user) {
+  edit(user) {
     const users = store.get('users');
-    const newUser = Object.assign({}, user);
+    const oldUser = users.find((usr) => usr.id === user.id || usr.username === user.username);
 
-    users.push(newUser);
-    store.set('users', users);
-    emitter.emit('store.users.add', newUser);
+    if (oldUser) {
+      Object.assign(oldUser, user);
+    } else {
+      const newId = users[users.length - 1].id + 1;
+      const newUser = Object.assign({ id: newId }, user);
+      users.push(newUser);
+    }
+
+    userStore.set(users);
   },
 
   remove(id) {
     const users = store.get('users');
-    const index = users.findIndex(user => user.id === id);
+    const index = users.findIndex((user) => user.id === id);
 
     if (index !== -1) {
-      const removedUser = users.splice(index, 1);
-      store.set('users', users);
-      emitter.emit('store.users.remove', removedUser);
+      users.splice(index, 1);
+      userStore.set(users);
     }
   },
 };

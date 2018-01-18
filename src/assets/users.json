@@ -123,8 +123,10 @@
     {
       "id": 10,
       "firstName": "Admin",
+      "lastName": "Root",
       "username": "admin",
       "password": "root",
+      "email": "admin@root.com",
       "isAdmin": true
     }
   ]

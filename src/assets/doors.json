@@ -1,0 +1,31 @@
+{
+  "doors": [
+    {
+      "id": 0,
+      "name": "Velvet Nugget",
+      "location": "Third floor Room 303",
+      "description": "A small meeting room",
+      "mode": "normal",
+      "status": "close",
+      "users": [1, 2, 3, 4, 5]
+    },
+    {
+      "id": 1,
+      "name": "Purple Gurgle",
+      "location": "First floor Room 101",
+      "description": "A large meeting room with two screens",
+      "mode": "offline",
+      "status": "close",
+      "users": [1, 2, 3, 4, 5]
+    },
+    {
+      "id": 2,
+      "name": "Red pearl",
+      "location": "Second floor Room 201",
+      "description": "A cosy room with a balcony",
+      "mode": "office mode",
+      "status": "open",
+      "users": [1, 2, 3]
+    }
+  ]
+}

@@ -2,21 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Button = props => {
-  const {
-    className,
-    children,
-    disabled,
-    variant,
-    loading,
-    type,
-    onTouchStart,
-    ...other
-  } = props;
+/**
+ * A simple Button component.
+ * @example
 
+    // Variant: primary, secondary, unlock
+    <Button type="submit" variant="primary">My Button</Button>
+ */
+const Button = ({ className, children, disabled, variant, loading, type, ...other }) => {
   const buttonClass = 'btn';
-  const variants =
-    variant && variant.split(' ').map(v => `${buttonClass}--${v}`);
+  const variants = variant && variant.split(' ').map((v) => `${buttonClass}--${v}`);
 
   const classes = classNames(buttonClass, className, variants, {
     [`${buttonClass}--disabled`]: disabled,
@@ -42,7 +37,6 @@ Button.propTypes = {
   type: PropTypes.string,
   loading: PropTypes.bool,
   disabled: PropTypes.bool,
-  onTouchStart: PropTypes.func,
 };
 
 Button.defaultProps = {

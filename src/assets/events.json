@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "userId": 0,
+      "doorId": 0,
+      "action": "open",
+      "status": "OK"
+    },
+    {
+      "id": 1,
+      "userId": 3,
+      "doorId": 1,
+      "action": "open",
+      "status": "KO"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "doorId": 2,
+      "action": "open",
+      "status": "OK"
+    }
+  ]
+}

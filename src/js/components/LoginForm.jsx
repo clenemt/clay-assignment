@@ -13,13 +13,7 @@ const LoginForm = ({
   handleSubmit,
 }) => (
   <form onSubmit={handleSubmit}>
-    <div
-      className={
-        errors.username && touched.username
-          ? 'form-group has-error'
-          : 'form-group'
-      }
-    >
+    <div className={errors.username && touched.username ? 'form-group has-error' : 'form-group'}>
       <label htmlFor="username" className="form-label">
         Username
       </label>
@@ -33,18 +27,10 @@ const LoginForm = ({
         className="form-control"
       />
       {errors.username &&
-        touched.username && (
-          <div className="form-feedback">{errors.username}</div>
-        )}
+        touched.username && <div className="form-feedback">{errors.username}</div>}
     </div>
 
-    <div
-      className={
-        errors.password && touched.password
-          ? 'form-group has-error'
-          : 'form-group'
-      }
-    >
+    <div className={errors.password && touched.password ? 'form-group has-error' : 'form-group'}>
       <label htmlFor="password" className="form-label">
         Password
       </label>
@@ -58,9 +44,7 @@ const LoginForm = ({
         className="form-control"
       />
       {errors.password &&
-        touched.password && (
-          <div className="form-feedback">{errors.password}</div>
-        )}
+        touched.password && <div className="form-feedback">{errors.password}</div>}
     </div>
 
     <div className="form-group">

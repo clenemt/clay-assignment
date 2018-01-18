@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Alert = props => {
-  const { className, children, variant, ...other } = props;
+/**
+ * A simple Alert component.
+ * @example
 
+    // Variant: danger, warning, info, success
+    <Alert variant="danger">Danger alert</Alert>
+ */
+const Alert = ({ className, children, variant, ...other }) => {
   const alertClass = 'alert';
-  const variants =
-    variant && variant.split(' ').map(v => `${alertClass}--${v}`);
+  const variants = variant && variant.split(' ').map((v) => `${alertClass}--${v}`);
   const classes = classNames(alertClass, className, variants);
 
   return (

@@ -37,7 +37,7 @@ $yellow-100: #ffd54f !default;
 $yellow-200: $yellow !default;
 $yellow-300: lighten($yellow, 20%) !default;
 
-$brand-primary: #f6a800 !default;
+$brand-primary: #2b1cab !default;
 $brand-secondary: $black !default;
 
 //
@@ -101,11 +101,11 @@ $disabled-color: $grey-500;
 // Why: Reused by most components
 //
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, sans-serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+  Arial, sans-serif !default;
 $font-family-serif: Georgia, 'Times New Roman', Times, serif !default;
-$font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono',
-  'Courier New', monospace !default;
+$font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  monospace !default;
 $font-family: $font-family-sans-serif !default;
 
 $font-size: 1rem !default;
@@ -132,7 +132,5 @@ $inputs-border-width: 2px;
 // Used to calculate inputs height
 // (select, button with icons...)
 $input-height: ($font-size * $inputs-line-height) + ($inputs-padding-y * 2);
-$input-height-sm: ($font-size * $inputs-line-height-sm) + ($inputs-padding-y-sm *
-      2);
-$input-height-lg: ($font-size-lg * $inputs-line-height-lg) + ($inputs-padding-y-lg *
-      2);
+$input-height-sm: ($font-size * $inputs-line-height-sm) + ($inputs-padding-y-sm * 2);
+$input-height-lg: ($font-size-lg * $inputs-line-height-lg) + ($inputs-padding-y-lg * 2);

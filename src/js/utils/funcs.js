@@ -1,2 +1,6 @@
-export const delay = ms => new Promise(r => setTimeout(r, ms));
+/**
+ * Some utils funcs.
+ */
+
+export const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 export const noop = () => {};

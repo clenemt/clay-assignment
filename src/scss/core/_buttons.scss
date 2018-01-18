@@ -2,7 +2,7 @@
 // Variables
 //
 
-$btn-primary: #fc8300;
+$btn-unlock: #7368d2;
 $btn-loader-size: 1.5rem;
 $btn-sm-loader-size: 1rem;
 
@@ -98,6 +98,24 @@ fieldset[disabled] button.btn {
 
 // 1. The `&:hover, &:focus` is needed to overide `a:hover` specificity
 // when using an anchor as a button
+
+// Buy buttons
+.btn--unlock {
+  color: $white;
+  background-image: linear-gradient(45deg, $btn-unlock, $brand-primary);
+  box-shadow: 0 5px 18px 0 rgba($btn-unlock, 0.4);
+
+  &:hover,
+  &:focus {
+    color: $white; // 1
+    box-shadow: 0 8px 18px 0 rgba($btn-unlock, 0.6);
+  }
+
+  &:active {
+    color: $white; // 1
+    box-shadow: 0 5px 18px 0 rgba($btn-unlock, 0.4);
+  }
+}
 
 // Primary buttons
 .btn--primary {
@@ -253,11 +271,6 @@ fieldset[disabled] button.btn {
   .btn {
     padding-left: $spacer;
     padding-right: $spacer;
-  }
-
-  // Override the above left/right padding reduction
-  .btn--link {
-    padding: 0;
   }
 
   .btn--sm {

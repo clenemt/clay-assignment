@@ -1,0 +1,39 @@
+.main-nav {
+  background: $grey-700;
+  border-bottom: $border-width solid $grey-500;
+  padding: $spacer /2 0;
+}
+
+.main-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav__back {
+  padding-left: $spacer * 1.5;
+  position: relative;
+}
+
+.main-nav__arrow {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background: url(../assets/img/arrow-right.png) no-repeat;
+  background-size: 100%;
+  opacity: 0.4;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 0;
+  top: 5px;
+
+  .main-nav__back:hover & {
+    opacity: 0.8;
+  }
+}
+
+.main-nav__title {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}

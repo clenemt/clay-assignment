@@ -1,0 +1,82 @@
+.styled-list {
+  border-left: $border-width solid $grey-500;
+  border-right: $border-width solid $grey-500;
+  border-top: $border-width solid $grey-500;
+  padding-left: 0;
+  list-style: none;
+  background: $grey-700;
+}
+
+.styled-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: $border-width solid $grey-500;
+  padding: $spacer 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.styled-list__avatar {
+  border-radius: 50%;
+  margin: 0 $spacer 0 $spacer * 2;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
+
+  .styled-list__item:hover & {
+    opacity: 1;
+  }
+}
+
+.styled-list__door {
+  margin: 0 $spacer;
+  opacity: 0.6;
+
+  .styled-list__item:hover & {
+    opacity: 0.8;
+  }
+}
+
+.styled-list__lock {
+  margin: 0 $spacer;
+  opacity: 0.8;
+}
+
+.styled-list__fullname {
+  width: 30%;
+
+  .styled-list__item:hover & {
+    color: $grey-100;
+  }
+}
+
+.styled-list__email {
+  color: $grey-300;
+  text-decoration: underline;
+  width: 30%;
+
+  .styled-list__item:hover & {
+    color: $grey-200;
+  }
+}
+
+.styled-list__arrow {
+  width: 1em;
+  height: 1em;
+  margin: 0 $spacer * 2;
+  align-self: center;
+  background: url(../assets/img/arrow-right.png) no-repeat;
+  background-size: 100%;
+  opacity: 0.4;
+
+  .styled-list__item:hover & {
+    opacity: 0.8;
+  }
+}
+
+.styled-list__status {
+  margin-right: $spacer * 2;
+}
