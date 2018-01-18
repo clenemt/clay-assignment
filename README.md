@@ -17,6 +17,8 @@ npm run start
 
 It will install dependencies, build the `docs/` folder and launch a small server at [localhost:9000](http://localhost:9000).
 
+**Attention**: Since there is no real backend and because everything is stored inside your local storage, if you ever get stuck in a bad state, simply clear your local storage.
+
 ## Guidelines
 
 * [Prettier](https://github.com/prettier/prettier) is used for style consistencies in all files

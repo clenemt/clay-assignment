@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 import usersStore from '../stores/usersStore';
-import { delay } from '../utils/funcs';
 
-const endpoint = '/assets/users.json';
+import { delay } from '../utils/funcs';
+import { usersEndpoint } from '../utils/variables';
 
 /**
  * Used to fetch the users from json.
@@ -12,7 +12,7 @@ const endpoint = '/assets/users.json';
 const usersService = {
   getAll() {
     return new Promise((resolve, reject) => {
-      axios.get(endpoint).then((response) => {
+      axios.get(usersEndpoint).then((response) => {
         if (response.data && response.data.users) {
           resolve(response.data.users);
         } else {

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { delay } from '../utils/funcs';
 import eventsStore from '../stores/eventsStore';
 
-const endpoint = '/assets/events.json';
+import { delay } from '../utils/funcs';
+import { eventsEndpoint } from '../utils/variables';
 
 /**
  * Used to fetch the events from json.
@@ -11,7 +11,7 @@ const endpoint = '/assets/events.json';
 const eventsService = {
   getAll() {
     return new Promise((resolve, reject) => {
-      axios.get(endpoint).then((response) => {
+      axios.get(eventsEndpoint).then((response) => {
         if (response.data && response.data.events) {
           resolve(response.data.events);
         } else {

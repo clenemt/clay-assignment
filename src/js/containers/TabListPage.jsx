@@ -17,6 +17,8 @@ import currentUserStore from '../stores/currentUserStore';
 import eventsService from '../services/eventsService';
 
 const formatPath = (path) => path.charAt(1).toUpperCase() + path.slice(2).toLowerCase();
+const pathToKey = (path) =>
+  ['users', 'doors', 'events'].find((key) => key === path.slice(1).toLowerCase()) || 'users';
 
 /**
  * The main tab layout.
@@ -42,7 +44,7 @@ class TabListPage extends React.Component {
 
   render() {
     const path = this.props.location.pathname;
-    const activeKey = path.slice(1).toLowerCase();
+    const activeKey = pathToKey(path);
 
     return (
       <>

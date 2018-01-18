@@ -5,8 +5,7 @@ import eventsStore from '../stores/eventsStore';
 import currentUserStore from '../stores/currentUserStore';
 
 import { delay } from '../utils/funcs';
-
-const endpoint = '/assets/doors.json';
+import { doorsEndpoint } from '../utils/variables';
 
 /**
  * Used to fetch the doors from json.
@@ -15,7 +14,7 @@ const endpoint = '/assets/doors.json';
 const doorsService = {
   getAll() {
     return new Promise((resolve, reject) => {
-      axios.get(endpoint).then((response) => {
+      axios.get(doorsEndpoint).then((response) => {
         if (response.data && response.data.doors) {
           resolve(response.data.doors);
         } else {
