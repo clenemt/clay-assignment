@@ -26,6 +26,7 @@ class UserDetailPage extends React.Component {
       password: '',
       email: '',
       phone: '',
+      isAdmin: false,
     };
 
     this.validationSchema = Yup.object().shape({

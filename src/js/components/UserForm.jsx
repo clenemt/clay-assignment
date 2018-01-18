@@ -114,6 +114,22 @@ const UserForm = ({
         touched.password && <div className="form-feedback">{errors.password}</div>}
     </div>
 
+    <div className="form-check">
+      <label htmlFor="isAdmin" className="form-check__label">
+        <input
+          id="isAdmin"
+          type="checkbox"
+          value={values.isAdmin}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          checked={values.isAdmin}
+          className="form-check__input"
+        />
+        <span className="form-check__indicator" />
+        Is the user admin ?
+      </label>
+    </div>
+
     <Button type="submit" loading={isSubmitting} variant="primary block">
       {buttonLabel}
     </Button>
