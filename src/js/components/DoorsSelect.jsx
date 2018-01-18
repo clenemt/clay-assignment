@@ -21,13 +21,13 @@ class DoorsSelect extends React.Component {
         <Select
           id="doors"
           options={this.props.options}
-          multi
-          removeSelected
           placeholder="Add doors access"
           closeOnSelect={false}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           value={this.props.value}
+          removeSelected
+          multi
         />
       </div>
     );
