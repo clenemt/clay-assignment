@@ -10,11 +10,7 @@ const isDebug = process.env.NODE_ENV !== 'production';
 const isVerbose = !!process.env.VERBOSE;
 
 const mode = `mode: ${isDebug ? "'debug'" : "'production'"}`;
-console.log(
-  `\n+${'-'.repeat(mode.length + 2)}+\n| ${mode} |\n+${'-'.repeat(
-    mode.length + 2
-  )}+\n`
-);
+console.log(`\n+${'-'.repeat(mode.length + 2)}+\n| ${mode} |\n+${'-'.repeat(mode.length + 2)}+\n`);
 
 const config = {
   // Compile for usage in a browser-like environment
@@ -30,7 +26,7 @@ const config = {
   // How and where it should output our bundle
   // https://webpack.js.org/configuration/output/
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../docs'),
     pathinfo: isVerbose,
     filename: `[name].js?[hash]`,
   },
@@ -64,6 +60,7 @@ const config = {
     new webpack.DefinePlugin({
       // Needed for setting webpack in production mode
       'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
+      __PROD__: !isDebug,
     }),
 
     ...(isDebug
@@ -119,7 +116,7 @@ const config = {
 
     // Tell the server where to serve content from
     // https://webpack.js.org/configuration/dev-server/#devserver-contentbase
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: path.resolve(__dirname, '../docs'),
 
     // Tell the server to watch the files served
     // https://webpack.js.org/configuration/dev-server/#devserver-watchcontentbase

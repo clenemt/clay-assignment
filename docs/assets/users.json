@@ -1,0 +1,133 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "firstName": "Glen",
+      "lastName": "Riley",
+      "gender": "male",
+      "username": "gRiley",
+      "password": "root",
+      "email": "gRiley@example.com",
+      "phone": "(336) 498-6429",
+      "doors": [1, 2, 3],
+      "image": "http://www.designskilz.com/random-users/images/imageM31.jpg",
+      "isAdmin": true
+    },
+    {
+      "id": 1,
+      "firstName": "Allie",
+      "lastName": "Nunez",
+      "gender": "female",
+      "username": "aNunez",
+      "password": "root",
+      "email": "aNunez@example.com",
+      "phone": "(422) 819-5893",
+      "doors": [1],
+      "image": "http://www.designskilz.com/random-users/images/imageF24.jpg"
+    },
+    {
+      "id": 2,
+      "firstName": "Inez",
+      "lastName": "Hodges",
+      "gender": "female",
+      "username": "iHodges",
+      "password": "root",
+      "email": "iHodges@example.com",
+      "phone": "(472) 718-3655",
+      "doors": [1, 2, 3, 4, 5],
+      "image": "http://www.designskilz.com/random-users/images/imageF44.jpg"
+    },
+    {
+      "id": 3,
+      "firstName": "Gordon",
+      "lastName": "Swanson",
+      "gender": "male",
+      "username": "gSwanson",
+      "password": "root",
+      "email": "gSwanson@example.com",
+      "phone": "(958) 491-6140",
+      "doors": [1, 4, 5],
+      "image": "http://www.designskilz.com/random-users/images/imageM42.jpg"
+    },
+    {
+      "id": 4,
+      "firstName": "Leo",
+      "lastName": "Weber",
+      "gender": "male",
+      "username": "lWeber",
+      "password": "root",
+      "email": "lWeber@example.com",
+      "phone": "(421) 982-9394",
+      "doors": [1, 2, 3],
+      "image": "http://www.designskilz.com/random-users/images/imageM11.jpg"
+    },
+    {
+      "id": 5,
+      "firstName": "Celia",
+      "lastName": "Dennis",
+      "gender": "female",
+      "username": "cDennis",
+      "password": "root",
+      "email": "cDennis@example.com",
+      "phone": "(567) 333-2940",
+      "doors": [1, 2],
+      "image": "http://www.designskilz.com/random-users/images/imageF46.jpg",
+      "isAdmin": true
+    },
+    {
+      "id": 6,
+      "firstName": "Harvey",
+      "lastName": "Robinson",
+      "gender": "male",
+      "username": "hRobinson",
+      "password": "root",
+      "email": "hRobinson@example.com",
+      "phone": "(600) 398-5306",
+      "image": "http://www.designskilz.com/random-users/images/imageM33.jpg"
+    },
+    {
+      "id": 7,
+      "firstName": "Susie",
+      "lastName": "Briggs",
+      "gender": "female",
+      "username": "sBriggs",
+      "password": "root",
+      "email": "sBriggs@example.com",
+      "phone": "(705) 468-3526",
+      "doors": [1, 5],
+      "image": "http://www.designskilz.com/random-users/images/imageF23.jpg"
+    },
+    {
+      "id": 8,
+      "firstName": "Lizzie",
+      "lastName": "Dennis",
+      "gender": "female",
+      "username": "lDennis",
+      "password": "root",
+      "email": "lDennis@example.com",
+      "phone": "(401) 972-6647",
+      "image": "http://www.designskilz.com/random-users/images/imageF4.jpg"
+    },
+    {
+      "id": 9,
+      "firstName": "Lulu",
+      "lastName": "Cross",
+      "gender": "female",
+      "username": "lCross",
+      "password": "root",
+      "email": "lCross@example.com",
+      "phone": "(404) 424-9262",
+      "image": "http://www.designskilz.com/random-users/images/imageF5.jpg",
+      "isAdmin": true
+    },
+    {
+      "id": 10,
+      "firstName": "Admin",
+      "lastName": "Root",
+      "username": "admin",
+      "password": "root",
+      "email": "admin@root.com",
+      "isAdmin": true
+    }
+  ]
+}

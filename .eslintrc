@@ -17,6 +17,9 @@
     "prettier/react"            // https://github.com/prettier/eslint-config-prettier
   ],
 
+  "globals": {
+    "__PROD__": true
+  },
   "rules": {
     "no-shadow": "off",
     "no-nested-ternary": "off",

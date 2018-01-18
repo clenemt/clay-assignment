@@ -82,7 +82,7 @@ const asset = {
   loader: 'file-loader',
   options: {
     emitFile: true,
-    name: 'assets/[name].[ext]?[hash]',
+    name: 'assets/img/[name].[ext]?[hash]',
   },
 };
 

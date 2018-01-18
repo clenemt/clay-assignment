@@ -12,6 +12,8 @@ import emitter from './utils/emitter';
 
 import currentUserStore from './stores/currentUserStore';
 
+import { baseUrl } from './utils/variables';
+
 /*
  * Holds the routing of our app.
  */
@@ -30,7 +32,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
+      <Router basename={baseUrl}>
         <Switch>
           <Route exact path="/login" component={LoginPage} />
           <Route

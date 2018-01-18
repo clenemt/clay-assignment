@@ -14,16 +14,15 @@
     "*.{js,jsx}": ["eslint --fix", "git add"]
   },
   "scripts": {
-    "clean": "shx rm  -rf dist",
+    "clean": "shx rm  -rf docs",
     "scaffold":
-      "npm run clean && shx mkdir dist && shx cp src/index.html dist/index.html && shx cp -r src/assets dist/assets",
+      "npm run clean && shx mkdir docs && shx cp src/index.html docs/index.html && shx cp -r src/assets docs/assets",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .jsx,.js .",
     "lint:staged": "lint-staged",
     "build": "npm run scaffold && cross-env NODE_ENV=production npm run webpack",
     "build:dev": "npm run scaffold && npm run webpack",
-    "start": "npm run scaffold && cross-env NODE_ENV=production npm run webpack-dev-server",
-    "start:dev": "npm run scaffold && npm run webpack-dev-server",
+    "start": "npm run scaffold && npm run webpack-dev-server",
     "webpack":
       "node -r @babel/register ./node_modules/webpack/bin/webpack.js --config=webpack/config.js",
     "webpack-dev-server":

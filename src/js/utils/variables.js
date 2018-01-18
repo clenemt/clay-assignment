@@ -3,7 +3,10 @@
  * Make it easy to refactor.
  */
 
-export const defaultAvatar = '/assets/img/default-avatar.svg';
-export const defaultDoor = '/assets/img/default-door.svg';
-export const defaultLock = '/assets/img/lock.svg';
-export const defaultUnlock = '/assets/img/unlock.svg';
+export const baseUrl = __PROD__ ? '/clay-assignment/' : '';
+const addBaseUrl = (url) => `${baseUrl}${url}`;
+
+export const defaultAvatar = addBaseUrl('/assets/img/default-avatar.svg');
+export const defaultDoor = addBaseUrl('/assets/img/default-door.svg');
+export const defaultLock = addBaseUrl('/assets/img/lock.svg');
+export const defaultUnlock = addBaseUrl('/assets/img/unlock.svg');

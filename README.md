@@ -15,7 +15,7 @@ npm install
 npm run start
 ```
 
-It will install dependencies, build the `dist/` folder and launch a small server at [localhost:9000](http://localhost:9000).
+It will install dependencies, build the `docs/` folder and launch a small server at [localhost:9000](http://localhost:9000).
 
 ## Guidelines
 
